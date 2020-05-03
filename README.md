@@ -14,16 +14,6 @@ The goals / steps of this project are the following:
 * Train and validate the model with a training and validation set
 * Test that the model successfully drives around track one without leaving the road
 
-[//]: # (Image References)
-
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
-
 ### Model Architecture and Training Strategy
 
 #### 1. Model Architecture
@@ -66,6 +56,8 @@ The images are originated from 3 front cameras:
 * A centered one
 * A left sided one
 * A right sided one
+
+![](./carnd-using-multiple-cameras.png)
 
 They are all parallel but are located with a certain offset among each other.
 This setup provides fundamental knowledge to the model in order to actuate in case the car deviates from the road.
