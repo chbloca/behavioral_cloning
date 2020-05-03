@@ -1,11 +1,13 @@
 import csv
 
+# Extract data from the csv file
 samples = []
 with open('/home/workspace/data/driving_log.csv') as csvfile:
     reader = csv.reader(csvfile)
     for line in reader:
         samples.append(line)
 
+# Split data into training set (80%) and validation set (20%) 
 from sklearn.model_selection import train_test_split
 train_samples, validation_samples = train_test_split(samples, test_size = 0.2)
 
@@ -13,6 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.utils import shuffle
 
+# Python generator --> It prevents memory saturation by feeding Keras with fit_generator due to the high amount of input data
 def generator(samples, batch_size = 32):
     num_samples = len(samples)
     while True:
@@ -90,6 +93,7 @@ for image, measurement in zip(images, measurements):
 print(X_train.shape, y_train.shape)
 '''
 
+# Calling the generators
 batch_size = 32
 train_generator = generator(train_samples, batch_size = batch_size)
 validation_generator = generator(validation_samples, batch_size = batch_size)
@@ -99,6 +103,7 @@ from keras.layers import Flatten, Dense, Lambda, Cropping2D, Dropout
 from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 
+# Model definition
 model = Sequential()
 model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape = (160, 320, 3)))
 model.add(Cropping2D(cropping = ((60, 25), (0, 0))))
@@ -122,7 +127,9 @@ history_object = model.fit_generator(train_generator,
                                      validation_steps = np.ceil(len(validation_samples) / batch_size),
                                      epochs = 2)
 #model.fit(X_train, y_train, validation_split = 0.2, shuffle = True, nb_epoch = 5)
+# Display model configuration configuration
 model.summary()
+# Save the model
 model.save('model.h5')
 
 '''
