@@ -80,4 +80,6 @@ Then 2 epochs are enough to train the model properly without overfitting and dem
 
 Final Result
 ---
+In the best case scenario, the autonomous car will drive as good as the trained car.
+
 [Video](./run1.mp4)
