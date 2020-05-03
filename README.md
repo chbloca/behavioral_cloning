@@ -85,3 +85,7 @@ From the original nVidia [architecture](https://images.nvidia.com/content/tegra/
 * images fed to the pipeline are cropped at the beginning so that some upper and lower portion of the images are removed since they are not relevant for the training
 
 Then 2 epochs are enough to train the model properly without overfitting and demonstrates a good performance on behavioral clonning.
+
+Final Result
+---
+[Video](./run1.mp4)
